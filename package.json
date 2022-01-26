@@ -4,5 +4,13 @@
   "main": "index.js",
   "repository": "https://github.com/vpdwebdesign/mvc-app-js.git",
   "author": "dekarpaulvictor <dekarpaulvictor@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^7.0.0"
+  },
+  "scripts": {
+    "client": "cd client && yarn start",
+    "server": "cd server && yarn start",
+    "start": "concurrently \"yarn client\" \"yarn server\""
+  }
 }
