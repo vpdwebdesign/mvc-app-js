@@ -1,0 +1,8 @@
+{
+  "name": "mvc-app-js",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/vpdwebdesign/mvc-app-js.git",
+  "author": "dekarpaulvictor <dekarpaulvictor@gmail.com>",
+  "license": "MIT"
+}
