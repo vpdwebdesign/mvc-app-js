@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const path = require('path');
 
 const { PrismaClient } = require('@prisma/client');
 
@@ -11,6 +12,9 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded( {extended: true} ));
+
+// Let Node serve the client's (React) static files
+app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 // Define port to listen on
 const port = process.env.PORT || 3333; 
@@ -102,6 +106,11 @@ app.delete('/student/delete/:id', async (req, res) => {
 app.delete('/student/deleteall', async (req, res) => {
   const deletedCount = await prisma.student.deleteMany({});
   res.json(deletedCount);
+});
+
+// Ensure client's index page is rendered for any other HTTP request
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 });
 
 // Launch Express app server

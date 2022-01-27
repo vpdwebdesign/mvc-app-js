@@ -13,6 +13,7 @@
     "express": "^4.17.2"
   },
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node index.js",
+    "build": "cd ../client && yarn install && yarn build"
   }
 }
